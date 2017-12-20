@@ -50,6 +50,8 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+   // private String GetCaregiver(String name) {
+   // }
 
 }
 
