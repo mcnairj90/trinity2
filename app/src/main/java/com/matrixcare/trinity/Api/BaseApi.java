@@ -103,7 +103,21 @@ public class BaseApi {
         }
     }
 
+    protected Bitmap ExecuteBitmapRequest(String url) {
+        try {
+            //url= "http://merge3llc.com/images/portfolio/grey_house.JPG";
+            URL u = new URL(url);
+            HttpURLConnection connection = (HttpURLConnection) u.openConnection();
+            connection.setRequestMethod("GET");
+            Bitmap bmp = BitmapFactory.decodeStream(connection.getInputStream());
+            return bmp;
+        }
+        catch (Exception ex) {
+            Log.e(LOG,ex.getMessage());
+            return null;
+        }
 
+    }
 
 
 }

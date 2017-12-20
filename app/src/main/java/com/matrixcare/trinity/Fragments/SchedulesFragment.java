@@ -2,6 +2,7 @@ package com.matrixcare.trinity.Fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.matrixcare.trinity.Activities.ScheduleListActivity;
@@ -32,6 +34,7 @@ public class SchedulesFragment extends Fragment {
     private static final Integer RequestCode = 0;
     private OnFragmentInteractionListener mListener;
     private RecyclerView mScheduleList;
+
     ProgressBar mProgress;
     private String mCaregiverId;
     private List<Schedule> mSchedules;
@@ -54,6 +57,7 @@ public class SchedulesFragment extends Fragment {
         View v =  inflater.inflate(R.layout.fragment_schedules, container, false);
         mScheduleList = v.findViewById(R.id.scheduleList);
         mProgress = v.findViewById(R.id.progress_loader);
+
         mScheduleList.setLayoutManager(new LinearLayoutManager(getActivity()));
         //updateUI();
         mProgress.setVisibility(View.VISIBLE);
@@ -66,6 +70,7 @@ public class SchedulesFragment extends Fragment {
         if (mSchedules!=null) {
             mAdapter = new ScheduleAdapter(mSchedules);
             mScheduleList.setAdapter(mAdapter);
+
         }
     }
 
@@ -187,9 +192,12 @@ public class SchedulesFragment extends Fragment {
             //load schedules after search
            // Arrays.sort(result, new ScheduleSort());
             mSchedules = result;
+
+
             updateUI();
         }
     }
+
 
 
 }

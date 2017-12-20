@@ -1,6 +1,7 @@
 package com.matrixcare.trinity.Api;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -24,5 +25,9 @@ public class ScheduleListApi extends BaseApi {
         Gson gson = new GsonBuilder().create();
         Schedule[] scheds = gson.fromJson(result, Schedule[].class);
         return Arrays.asList(scheds);
+    }
+
+    public Bitmap GetImage(String url) {
+        return ExecuteBitmapRequest(url);
     }
 }
