@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "140146218034",
+    "firebase_url": "https://trinity-189615.firebaseio.com",
+    "project_id": "trinity-189615",
+    "storage_bucket": "trinity-189615.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:140146218034:android:ea29abf2fff3bbde",
+        "android_client_info": {
+          "package_name": "com.matrixcare.trinity"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "140146218034-2k94l3d3hmht930trv5i9j4tc4lft9ma.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQ6a5K4sWekzOLt-iaFgVpDn_M_yYW4uc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -35,4 +35,6 @@ dependencies {
     compile 'com.google.guava:guava:18.0'
     compile 'com.squareup.okhttp:okhttp:2.5.0'
     compile 'com.microsoft.azure:azure-mobile-android:3.2.0@aar'
+    apply plugin: 'com.google.gms.google-services'
+    compile 'com.google.firebase:firebase-messaging:11.6.2'
 }
