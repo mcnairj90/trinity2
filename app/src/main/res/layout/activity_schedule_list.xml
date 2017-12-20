@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:stretchColumns="0,1"
+    android:padding="10dp"
+    android:layout_margin="10dp"
+    android:orientation="vertical"
+    tools:context="com.matrixcare.trinity.Activities.ScheduleListActivity">
+    <ImageView
+        android:id="@+id/cgImage"
+        android:layout_width="match_parent"
+        android:layout_height="125dp"
+        android:padding="5dp"
+        android:scaleType="fitCenter"
+        android:contentDescription="Image"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:text="CG Name"/>
+    <TextView
+        android:id="@+id/cgName"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:text="Appointment"/>
+    <TextView
+        android:id="@+id/appt"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:text="Cert Period"/>
+    <TextView
+        android:id="@+id/cert"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:text="Services"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/taskList"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        />
+
+</LinearLayout>
