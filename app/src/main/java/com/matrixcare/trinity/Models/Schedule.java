@@ -1,11 +1,6 @@
 package com.matrixcare.trinity.Models;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
 import org.joda.time.DateTime;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
 
 import java.io.Serializable;
 
@@ -15,84 +10,109 @@ import java.io.Serializable;
  */
 
 public class Schedule implements Serializable {
-    @com.google.gson.annotations.SerializedName("StartTime")
-    private String StartTime;
-    @com.google.gson.annotations.SerializedName("EndTime")
-    private String EndTime;
-    @com.google.gson.annotations.SerializedName("ClientId")
-    private String ClientId;
-    @com.google.gson.annotations.SerializedName("Service")
-    private String Service;
-    @com.google.gson.annotations.SerializedName("CaregiverId")
-    private String CaregiverId;
-    private String status;
+    @com.google.gson.annotations.SerializedName("startTime")
+    private String startTime;
+    private String clientFirstName;
+    private String clientLastName;
+    private String address;
+    private String phone;
+    private String caregiverPicUrl;
+    private String clientPicUrl;
+    private String service;
+
     @com.google.gson.annotations.SerializedName("id")
     private String mId;
-    public String getEndTime() {
-        return EndTime;
-    }
-
-    public void setEndTime(String endTime) {
-        EndTime = endTime;
-    }
-
-    public String getStartTime() {
-        return StartTime;
-    }
-
-    public void setStartTime(String startTime) {
-        StartTime = startTime;
-    }
-
-    public String getClientId() {
-        return ClientId;
-    }
-
-    public void setClientId(String clientId) {
-        ClientId = clientId;
-    }
-
-    public String getService() {
-        return Service;
-    }
-
-    public void setService(String service) {
-        Service = service;
-    }
-
-    public String getCaregiverId() {
-        return CaregiverId;
-    }
-
-    public void setCaregiverId(String caregiverId) {
-        CaregiverId = caregiverId;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
 
     public String getPrintedDate() {
        // DateTimeFormatter fmt = DateTimeFormat.forPattern("MM/dd/yyyy");
         DateTime start = DateTime.parse(getStartTime());
-        DateTime end = DateTime.parse(getEndTime());
         return start.toString("MM/dd/yyyy K:mm a");// + " - " + end.toString("K:mm a");
     }
 
+    public String getClientFullName() {
+        return getClientFirstName() + " " + getClientLastName();
+    }
     public String getId() {
-        return mId;
+        return getmId();
     }
 
     public void setId(String mId) {
-        this.mId = mId;
+        this.setmId(mId);
     }
     @Override
     public boolean equals(Object o) {
-        return o instanceof Schedule && ((Schedule) o).mId == mId;
+        return o instanceof Schedule && ((Schedule) o).getmId() == getmId();
     }
 
+    public String getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
+    public String getClientFirstName() {
+        return clientFirstName;
+    }
+
+    public void setClientFirstName(String clientFirstName) {
+        this.clientFirstName = clientFirstName;
+    }
+
+    public String getClientLastName() {
+        return clientLastName;
+    }
+
+    public void setClientLastName(String clientLastName) {
+        this.clientLastName = clientLastName;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getCaregiverPicUrl() {
+        return caregiverPicUrl;
+    }
+
+    public void setCaregiverPicUrl(String caregiverPicUrl) {
+        this.caregiverPicUrl = caregiverPicUrl;
+    }
+
+    public String getClientPicUrl() {
+        return clientPicUrl;
+    }
+
+    public void setClientPicUrl(String clientPicUrl) {
+        this.clientPicUrl = clientPicUrl;
+    }
+
+    public String getmId() {
+        return mId;
+    }
+
+    public void setmId(String mId) {
+        this.mId = mId;
+    }
+
+    public String getService() {
+        return service;
+    }
+
+    public void setService(String service) {
+        this.service = service;
+    }
 }

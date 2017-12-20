@@ -28,17 +28,17 @@ public class BaseApi {
     protected String mBaseUrl;
     protected Context mContext;
 
-    public BaseApi(Context context, String baseUrl) {
+    public BaseApi(Context context) {
         mContext = context;
-        mBaseUrl = baseUrl;
+        mBaseUrl = "http://trinity-mapsapp.azurewebsites.net/";
     }
-    public String ExecuteRequest(String partialUrl, String parameters) {
+    protected String ExecuteRequest(String partialUrl, String parameters) {
         try {
             URL obj = new URL(mBaseUrl+partialUrl);
             HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
             connection.setRequestMethod("GET");
             connection.addRequestProperty("Content-Type", "application/json");
-            connection.setDoOutput(true);
+          //  connection.setDoOutput(true);
             if (parameters!=null && parameters.length()>0) { //only write parms to the outgoing request if they are specified
                 DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
                 wr.writeBytes(parameters);

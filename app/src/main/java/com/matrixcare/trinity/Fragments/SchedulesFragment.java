@@ -14,7 +14,9 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.matrixcare.trinity.Activities.ScheduleListActivity;
+import com.matrixcare.trinity.Api.ApplicationData;
 import com.matrixcare.trinity.Api.Azure;
+import com.matrixcare.trinity.Api.ScheduleListApi;
 import com.matrixcare.trinity.Interfaces.OnFragmentInteractionListener;
 import com.matrixcare.trinity.Models.Schedule;
 import com.matrixcare.trinity.R;
@@ -55,7 +57,7 @@ public class SchedulesFragment extends Fragment {
         mScheduleList.setLayoutManager(new LinearLayoutManager(getActivity()));
         //updateUI();
         mProgress.setVisibility(View.VISIBLE);
-        new ScheduleList(getActivity().getBaseContext()).execute(mCaregiverId);
+        new ScheduleList(getActivity().getBaseContext()).execute(ApplicationData.CaregiverId);
         return v;
     }
 
@@ -117,8 +119,8 @@ public class SchedulesFragment extends Fragment {
         public void bind(Schedule sched) {
             mScheduleData = sched;
             mService.setText(mScheduleData.getService());
-            mStatus.setText(mScheduleData.getStatus());
-            mCaregiver.setText(mScheduleData.getCaregiverId());
+            mStatus.setText("Scheduled");
+            mCaregiver.setText(mScheduleData.getClientFullName());
             mDate.setText(mScheduleData.getPrintedDate());
         }
 
@@ -159,6 +161,15 @@ public class SchedulesFragment extends Fragment {
         }
         @Override
         protected List<Schedule> doInBackground(String... params){
+            ScheduleListApi da = new ScheduleListApi(mContext);
+            try {
+                List<Schedule> sched = da.Get(params[0]);
+                return sched;
+            } catch (Exception ex) {
+                Log.d(LOG,ex.getMessage());
+            }
+            /*
+            ScheduleList
             MobileServiceTable<Schedule> scheduleTable;
             scheduleTable = Azure.getClient().getTable(Schedule.class);
             try {
@@ -167,6 +178,7 @@ public class SchedulesFragment extends Fragment {
             } catch (Exception ex) {
                 Log.d(LOG,ex.getMessage());
             }
+            */
             return null;
         }
 
