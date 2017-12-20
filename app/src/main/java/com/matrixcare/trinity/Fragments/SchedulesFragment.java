@@ -132,6 +132,7 @@ public class SchedulesFragment extends Fragment {
         @Override
         public void onClick(View view) {
             Intent intent = ScheduleListActivity.newIntent(getActivity(),mScheduleData); //gson.toJson(mScheduleData)
+            ApplicationData.schedule = mScheduleData;
             startActivity(intent);
         }
     }

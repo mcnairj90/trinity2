@@ -12,6 +12,8 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.matrixcare.trinity.Api.ApplicationData;
+import com.matrixcare.trinity.Api.ScheduleListApi;
 import com.matrixcare.trinity.Models.Schedule;
 import com.matrixcare.trinity.Models.ScheduleDetail;
 import com.matrixcare.trinity.R;
@@ -19,72 +21,56 @@ import com.matrixcare.trinity.R;
 public class ScheduleListActivity extends AppCompatActivity {
     private static final String ScheduleLI = "Schedule";
 
-    private ImageView mImg;
-    private TextView mName;
-    private TextView mAppt;
-    private TextView mCert;
-    private FrameLayout mTasks;
-    private RecyclerView mTaskList;
+    private ImageView mclient_image;
+    private TextView mclientName;
+    private TextView mclientAddress;
+    private TextView mclientPhone;
+    private TextView mstartTime;
+    private TextView mservice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule_list);
-        mImg = findViewById(R.id.cgImage);
-        mName = findViewById(R.id.cgName);
-        mAppt = findViewById(R.id.appt);
-        mCert = findViewById(R.id.cert);
-        mTaskList = findViewById(R.id.taskList);
+        mclient_image = findViewById(R.id.client_image);
+        mclientName = findViewById(R.id.clientName);
+        mclientAddress = findViewById(R.id.clientAddress);
+        mclientPhone = findViewById(R.id.clientPhone);
+        mstartTime = findViewById(R.id.startTime);
+        mservice = findViewById(R.id.service);
+        Schedule sched = ApplicationData.schedule;
+        String picUrl =sched.getClientPicUrl();
+        if (picUrl!=null) {
+            new GetPicture(ScheduleListActivity.this).execute(picUrl);
+        }
 
-        mTaskList.setLayoutManager(new LinearLayoutManager(ScheduleListActivity.this));
-       // new GetScheduleDetail(ScheduleListActivity.this).execute(mScheduleListItem.getId());
+        mclientName.setText(sched.getClientFullName());
+        mclientAddress.setText(sched.getAddress());
+        mclientPhone.setText(sched.getPhone());
+        mstartTime.setText(sched.getPrintedDate());
+        mservice.setText(sched.getService());
 
     }
 
-    private void updateUi() {
-
-    }
     public static Intent newIntent(Context packageContext, Schedule sched) {
         Intent intent = new Intent(packageContext,ScheduleListActivity.class);
         intent.putExtra(ScheduleLI, sched);
         return intent;
     }
 
-    private class GetScheduleDetail extends AsyncTask<Integer, Void, ScheduleDetail> {
+    private class GetPicture extends AsyncTask<String, Void, Bitmap> {
         private Context mContext;
-        GetScheduleDetail(Context context){
+        GetPicture(Context context){
             mContext = context;
         }
         @Override
-        protected ScheduleDetail doInBackground(Integer... params){
-           // ScheduleApi api = new ScheduleApi(mContext);
-           // return api.Get(params[0]);
-            return null;
-        }
-        @Override
-        protected void onPostExecute(ScheduleDetail result) {
-           // mScheduleDetail = result;
-           // new GetCaregiverPicture(mContext).execute(mScheduleDetail.getCaregiverId());
-            updateUi();
-        }
-    }
-
-
-    private class GetCaregiverPicture extends AsyncTask<Integer, Void, Bitmap> {
-        private Context mContext;
-        GetCaregiverPicture(Context context){
-            mContext = context;
-        }
-        @Override
-        protected Bitmap doInBackground(Integer... params){
-           // ImageApi api = new ImageApi(mContext);
-           // return api.GetCaregiverImage(params[0]);
-            return null;
+        protected Bitmap doInBackground(String... params){
+            ScheduleListApi api = new ScheduleListApi(mContext);
+            return api.GetImage(params[0]);
         }
         @Override
         protected void onPostExecute(Bitmap result) {
-            mImg.setImageBitmap(result);
-
+            mclient_image.setImageBitmap(result);
         }
     }
 

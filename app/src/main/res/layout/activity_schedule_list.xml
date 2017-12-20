@@ -8,48 +8,75 @@
     android:layout_margin="10dp"
     android:orientation="vertical"
     tools:context="com.matrixcare.trinity.Activities.ScheduleListActivity">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Appointment Detail"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:textAlignment="center"
+        />
     <ImageView
-        android:id="@+id/cgImage"
-        android:layout_width="match_parent"
-        android:layout_height="125dp"
-        android:padding="5dp"
-        android:scaleType="fitCenter"
-        android:contentDescription="Image"/>
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_margin="10dp"
+        android:id="@+id/client_image"
+        >
+    </ImageView>
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="25dp"
-        android:text="CG Name"/>
+        android:layout_height="wrap_content"
+        android:text="Client Name"
+        android:textStyle="bold"
+        />
     <TextView
-        android:id="@+id/cgName"
+        android:id="@+id/clientName"
         android:layout_width="match_parent"
-        android:layout_height="25dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
         />
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="25dp"
-        android:text="Appointment"/>
+        android:layout_height="wrap_content"
+        android:text="Address"
+        android:textStyle="bold"/>
     <TextView
-        android:id="@+id/appt"
+        android:id="@+id/clientAddress"
         android:layout_width="match_parent"
-        android:layout_height="25dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
         />
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="25dp"
-        android:text="Cert Period"/>
+        android:layout_height="wrap_content"
+        android:text="Phone"
+        android:textStyle="bold"/>
     <TextView
-        android:id="@+id/cert"
+        android:id="@+id/clientPhone"
         android:layout_width="match_parent"
-        android:layout_height="25dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
         />
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="25dp"
-        android:text="Services"/>
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/taskList"
+        android:layout_height="wrap_content"
+        android:text="Appointment Time"
+        android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/startTime"
         android:layout_width="match_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
         />
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Service"
+        android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/service"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        />
 </LinearLayout>
