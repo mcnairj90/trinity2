@@ -10,6 +10,7 @@ public class Caregiver {
     private String Phone;
     private String id;
     private String PicUrl;
+    private String DeviceToken;
 
     @Override
     public boolean equals(Object o) {
@@ -55,7 +56,10 @@ public class Caregiver {
         return PicUrl;
     }
 
-    public void setPicUrl(String picUrl) {
-        PicUrl = picUrl;
-    }
+    public void setPicUrl(String picUrl) { PicUrl = picUrl; }
+
+    public String getDeviceToken() {return DeviceToken; }
+
+    public void setDeviceToken(String deviceToken) { DeviceToken = deviceToken; }
+
 }

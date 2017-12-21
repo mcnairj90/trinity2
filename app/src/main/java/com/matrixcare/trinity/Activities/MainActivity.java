@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Azure.Initialize(this);
+
 
         mCaregiverId=getIntent().getStringExtra(CaregiverIdKey);
         ApplicationData.CaregiverId = mCaregiverId;
