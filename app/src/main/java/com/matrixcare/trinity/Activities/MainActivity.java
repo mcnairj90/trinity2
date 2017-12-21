@@ -34,8 +34,9 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mCaregiverId=getIntent().getStringExtra(CaregiverIdKey);
-        ApplicationData.CaregiverId = mCaregiverId;
+        Azure.Initialize(MainActivity.this);
+        //mCaregiverId=getIntent().getStringExtra(CaregiverIdKey);
+       // ApplicationData.CaregiverId = mCaregiverId;
         setContentView(R.layout.activity_main);
         FragmentManager fm = getSupportFragmentManager();
         CreateScheduleListFragment(fm);
@@ -109,10 +110,13 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
 
         @Override
         protected void onPostExecute(List<Schedule> result) {
-            String picUrl = result.get(0).getCaregiverPicUrl();
-            if (picUrl!=null) {
-                new GetCaregiverPicture(mContext).execute(picUrl);
+            if (result.size()>0) {
+                String picUrl = result.get(0).getCaregiverPicUrl();
+                if (picUrl!=null) {
+                    new GetCaregiverPicture(mContext).execute(picUrl);
+                }
             }
+
         }
     }
 
