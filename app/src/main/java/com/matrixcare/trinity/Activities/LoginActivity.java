@@ -46,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
 
                // mProgress.setVisibility(View.VISIBLE);
               //  mLogin.setEnabled(false);
-                String car = "73ebfedc-1460-4a17-a6fb-4c19d8ebcd2c";
+                String car = GetCaregiver(username);
                 ApplicationData.CaregiverId = car;
 
                 Intent intent = MainActivity.newIntent(LoginActivity.this,car);
@@ -88,8 +88,19 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
-   // private String GetCaregiver(String name) {
-   // }
+    private String GetCaregiver(String name) {
+        switch (name) {
+            case "jstazer": return "73ebfedc-1460-4a17-a6fb-4c19d8ebcd2c";
+            case "fwaldemeir": return "603fbee7-e363-44e7-bab4-b9505b01b491";
+            case "bfriedens": return "471c7761-eb98-4832-a34e-15398957189e";
+            case "cdrouzure": return "a4fc7003-7d1f-45c8-a2b8-f85eb8894fee";
+            case "rnumberone": return "f5e3cdfa-9e66-4f79-890a-9cf6360a26ef";
+            case "rnumbertwo": return "775d9eb9-3804-407a-9fa0-768bc7f0c7af";
+            case "jwalzure": return "7a85d8dd-b1a9-4e68-ac27-d4abf0693c2a";
+            case "nsuzure": return "e8e74e0c-65f9-489f-9fde-5bb37cc9cdeb";
+            default: return "73ebfedc-1460-4a17-a6fb-4c19d8ebcd2c";
+        }
+    }
 
 }
 

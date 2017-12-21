@@ -34,8 +34,6 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
         mCaregiverId=getIntent().getStringExtra(CaregiverIdKey);
         ApplicationData.CaregiverId = mCaregiverId;
         setContentView(R.layout.activity_main);
@@ -48,10 +46,12 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
     }
     private void CreateScheduleListFragment(FragmentManager fm) {
         Fragment frag = fm.findFragmentById(R.id.schedule_container);
-        if (frag==null) {
-            frag = new SchedulesFragment();
-            fm.beginTransaction().add(R.id.schedule_container,frag).commit();
+        if (frag!=null) {
+            fm.beginTransaction().remove(frag).commit();
         }
+        frag = new SchedulesFragment();
+        fm.beginTransaction().add(R.id.schedule_container,frag).commit();
+
     }
     public static Intent newIntent(Context packageContext, String caregiverId) {
         Intent intent = new Intent(packageContext,MainActivity.class);
