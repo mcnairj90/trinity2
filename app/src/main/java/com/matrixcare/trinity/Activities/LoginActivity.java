@@ -54,8 +54,8 @@ public class LoginActivity extends AppCompatActivity {
 
                 Azure.Initialize(LoginActivity.this);
                 //Once user has logged in get the FirebaseInstanceId and update the Caregiver record
-                String deviceId = FirebaseInstanceId.getInstance().getId();
-                new CaregiverDeviceTokenUpdate(LoginActivity.this).execute(ApplicationData.CaregiverId, deviceId);
+                String deviceToken = FirebaseInstanceId.getInstance().getToken();
+                new CaregiverDeviceTokenUpdate(LoginActivity.this).execute(ApplicationData.CaregiverId, deviceToken);
 
             }
         });
